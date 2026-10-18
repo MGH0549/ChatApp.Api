@@ -1,0 +1,13 @@
+$kind: http-request
+name: http://localhost:5232/api/Users/username
+description: ""
+url: http://localhost:5232/api/Users/username
+method: GET
+body:
+  type: json
+  content: ""
+auth:
+  type: bearer
+  credentials:
+    token: " {{json_web_token_109l}}"
+order: 1791203331174

@@ -1,0 +1,57 @@
+@ChatApp_HostAddress = http://localhost:5232
+
+POST {{ChatApp_HostAddress}}/api/account/register
+Content-Type: application/json
+
+{
+    "username": "mohamed1",
+    "password": "Pa$$w0rd",
+    "city":"Cairo",
+    "country":"Egypt",
+    "knownAs":"testuser",
+    "gender":"male",
+    "dateofbirth":"1990-01-01"
+}
+###login
+POST {{ChatApp_HostAddress}}/api/account/login
+Content-Type: application/json
+
+{
+    "username": "mgh",
+    "password": "Pa$$w0rd"
+}
+###Users
+GET {{ChatApp_HostAddress}}/api/Users?currentusername=mohamed1&&gender=male
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyMyIsInVuaXF1ZV9uYW1lIjoibW9oYW1lZDEiLCJyb2xlIjoiTUVNQkVSIiwibmJmIjoxNzkxMTM5MDMzLCJleHAiOjE3OTE3NDM4MzMsImlhdCI6MTc5MTEzOTAzM30.Oz-lHmV_i0LeXMCtKWNG2oCPCN4f-xjQwcWtDg2zbTzZo_vZ1fIrSDRl9W9AaR1UIc73kFjsEeqWn-fRCXKUvQ
+###
+POST {{ChatApp_HostAddress}}/api/Users/add-photo
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyMyIsInVuaXF1ZV9uYW1lIjoibW9oYW1lZDEiLCJyb2xlIjoiTUVNQkVSIiwibmJmIjoxNzkxMTM5MDMzLCJleHAiOjE3OTE3NDM4MzMsImlhdCI6MTc5MTEzOTAzM30.Oz-lHmV_i0LeXMCtKWNG2oCPCN4f-xjQwcWtDg2zbTzZo_vZ1fIrSDRl9W9AaR1UIc73kFjsEeqWn-fRCXKUvQ
+
+####Messages
+GET {{ChatApp_HostAddress}}/api/Messages?pageNumber=1&pageSize=5&Container=Unread&Username=mgh
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxNyIsInVuaXF1ZV9uYW1lIjoibWdoIiwicm9sZSI6Ik1FTUJFUiIsIm5iZiI6MTc5MTQ4NTA3NywiZXhwIjoxNzkyMDg5ODc3LCJpYXQiOjE3OTE0ODUwNzd9.Hz5w_0PbhIaaYr88MaihRLBVXefuWqWWA_wxDAYnYJY8PHxDUehG2dsNnUCrkINRHSDDH9Ll4cv0aS4PeeVIRQ
+
+####Likes
+GET {{ChatApp_HostAddress}}/api/likes?predicate=liked&pageNumber=1&pageSize=5
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxNyIsInVuaXF1ZV9uYW1lIjoibWdoIiwicm9sZSI6Ik1FTUJFUiIsIm5iZiI6MTc5MTQ4NTA3NywiZXhwIjoxNzkyMDg5ODc3LCJpYXQiOjE3OTE0ODUwNzd9.Hz5w_0PbhIaaYr88MaihRLBVXefuWqWWA_wxDAYnYJY8PHxDUehG2dsNnUCrkINRHSDDH9Ll4cv0aS4PeeVIRQ
+###
+
+POST  {{ChatApp_HostAddress}}/api/likes/mohamed1
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxNyIsInVuaXF1ZV9uYW1lIjoibWdoIiwicm9sZSI6Ik1FTUJFUiIsIm5iZiI6MTc5MTQ4NTA3NywiZXhwIjoxNzkyMDg5ODc3LCJpYXQiOjE3OTE0ODUwNzd9.Hz5w_0PbhIaaYr88MaihRLBVXefuWqWWA_wxDAYnYJY8PHxDUehG2dsNnUCrkINRHSDDH9Ll4cv0aS4PeeVIRQ
+Content-Type: application/json
+
+
+###Admin
+POST {{ChatApp_HostAddress}}/api/admin/edit-roles/mohamed1?roles=Admin,Moderator
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxNyIsInVuaXF1ZV9uYW1lIjoibWdoIiwicm9sZSI6Ik1FTUJFUiIsIm5iZiI6MTc5MTQ4NTA3NywiZXhwIjoxNzkyMDg5ODc3LCJpYXQiOjE3OTE0ODUwNzd9.Hz5w_0PbhIaaYr88MaihRLBVXefuWqWWA_wxDAYnYJY8PHxDUehG2dsNnUCrkINRHSDDH9Ll4cv0aS4PeeVIRQ
+Content-Type: application/json
+###
+GET  {{ChatApp_HostAddress}}/api/admin/users-with-roles
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyMyIsInVuaXF1ZV9uYW1lIjoibW9oYW1lZDEiLCJyb2xlIjpbIkFETUlOIiwiTW9kZXJhdG9yIl0sIm5iZiI6MTc5MTU2NzU5MywiZXhwIjoxNzkyMTcyMzkzLCJpYXQiOjE3OTE1Njc1OTN9.tnKU7JF_aAlfDu1zp2zJq77ahOpR9aCtW2m--lVTcHDDZoTbBnvbdP3EcLiZxN_5jsmLm1fSGYqQHIYDME4A8A
+###
+POST {{ChatApp_HostAddress}}/hubs/presence/negotiate?negotiateVersion=1
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyMyIsInVuaXF1ZV9uYW1lIjoibW9oYW1lZDEiLCJyb2xlIjpbIkFETUlOIiwiTW9kZXJhdG9yIl0sIm5iZiI6MTc5MTU2NzU5MywiZXhwIjoxNzkyMTcyMzkzLCJpYXQiOjE3OTE1Njc1OTN9.tnKU7JF_aAlfDu1zp2zJq77ahOpR9aCtW2m--lVTcHDDZoTbBnvbdP3EcLiZxN_5jsmLm1fSGYqQHIYDME4A8A
+
+
+
+
